@@ -15,6 +15,12 @@ bool initializeDxLib(const GameSettings& settings) {
         , settings.getHeight()
         , settings.getColorBit()
     );
+    // Expand the window size by 1 times
+    SetWindowSizeExtendRate(1.0);
+    // Set vertical sync
+    SetWaitVSyncFlag(FALSE);
+    // Always run the application
+    SetAlwaysRunFlag(TRUE);
 
     return DxLib_Init() != -1;
 }
