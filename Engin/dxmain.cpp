@@ -12,6 +12,9 @@ int WINAPI WinMain(
     (void)lpCmdLine;
     (void)nCmdShow;
 
+    // Disable outputting log files
+    SetOutApplicationLogValidFlag(FALSE);
+
     // Initialize the DX Library
     if (DxLib_Init() == -1) {
         return -1; // Initialization failed
