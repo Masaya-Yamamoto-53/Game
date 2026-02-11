@@ -140,6 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dxmain.cpp" />
+    <ClCompile Include="GameSettings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameSettings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
