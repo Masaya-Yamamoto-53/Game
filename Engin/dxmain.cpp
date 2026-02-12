@@ -1,5 +1,7 @@
 #include "DxLib.h"
 #include "GameSettings.h"
+#include "InputDeviceHub.h"
+#include "SceneManager.h"
 
 bool initializeDxLib(const GameSettings& settings) {
     // Dx Library Settings
@@ -45,12 +47,29 @@ int WINAPI WinMain(
         return -1;
     }
 
+    // User code initialization
+    SceneManager sceneManager;
+
+    // Set the drawing target to the back screen
+    SetDrawScreen(DX_SCREEN_BACK);
+
     // Main loop
     while (true) {
         // DxLibが終了要求を返したらループを抜ける
         if (ProcessMessage() != 0) {
             break;
         }
+        // Clear the screen
+        ClearDrawScreen();
+
+        // Update input devices and the current scene
+        InputDeviceHub::instance().update();
+        // Update and render the current scene
+        sceneManager.update();
+        sceneManager.render();
+
+        // Update the screen
+        ScreenFlip();
     }
 
     // Finalize the DX Library
