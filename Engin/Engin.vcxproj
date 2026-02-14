@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dxmain.cpp" />
+    <ClCompile Include="GameLoadScene.cpp" />
     <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="InputDeviceHub.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
@@ -147,8 +148,11 @@
     <ClCompile Include="MouseInput.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="TownScene.cpp" />
+    <ClCompile Include="TownSceneLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameLoadScene.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="InputDeviceHub.h" />
@@ -159,6 +163,9 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneType.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="TownScene.h" />
+    <ClInclude Include="TownSceneData.h" />
+    <ClInclude Include="TownSceneLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

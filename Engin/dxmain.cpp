@@ -39,6 +39,11 @@ int WINAPI WinMain(
     (void)lpCmdLine;
     (void)nCmdShow;
 
+    // ƒRƒ“ƒ\[ƒ‹‚ğì¬
+    AllocConsole();
+    FILE* out = nullptr;
+    freopen_s(&out, "CON", "w", stdout);
+
     // Load game settings
     auto& settings = GameSettings::instance();
 

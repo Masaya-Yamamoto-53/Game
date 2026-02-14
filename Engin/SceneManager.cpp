@@ -8,9 +8,18 @@ SceneManager::SceneManager()
     m_currentSceneType = SceneType::Logo;
 }
 
-void SceneManager::changeScene(SceneType newSceneType) {
+void SceneManager::changeScene(
+      SceneType newSceneType
+    , const std::string filename
+) {
+    printf("Changing scene to %d\n", static_cast<int>(newSceneType));
     m_currentScene = createScene(newSceneType);
     m_currentSceneType = newSceneType;
+
+    if (!filename.empty()) {
+        printf("Loading world scene from file: %s\n", filename.c_str());
+        m_currentScene->load(filename);
+    }
 }
 
 void SceneManager::update() {
@@ -27,6 +36,10 @@ std::unique_ptr<GameScene> SceneManager::createScene(SceneType sceneType) {
         return std::make_unique<LogoScene>(this);
     case SceneType::Title:
         return std::make_unique<TitleScene>(this);
+    case SceneType::GameLoad:
+        return std::make_unique<GameLoadScene>(this);
+    case SceneType::Town:
+        return std::make_unique<TownScene>(this);
     default:
         return nullptr;
     }

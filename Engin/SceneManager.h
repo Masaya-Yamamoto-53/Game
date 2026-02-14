@@ -1,7 +1,8 @@
 #pragma once
-#include <memory>
 #include "GameScene.h"
 #include "SceneType.h"
+#include <string>
+#include <memory>
 
 class SceneManager {
 private:
@@ -9,7 +10,10 @@ private:
     std::unique_ptr<GameScene> m_currentScene;
 public:
     SceneManager();
-    void changeScene(SceneType newSceneType);
+    void changeScene(
+          SceneType newSceneType
+        , const std::string filename = ""
+    );
     void update();
     void render();
 private:

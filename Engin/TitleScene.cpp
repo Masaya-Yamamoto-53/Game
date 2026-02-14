@@ -9,11 +9,9 @@ TitleScene::TitleScene(SceneManager* sceneManager)
 }
 
 void TitleScene::update() {
-    if (InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_RETURN)) {
-        //m_sceneManager->changeScene(SceneType::GameLoad);
-    }
-    if (InputDeviceHub::instance().isMousePressed(MOUSE_INPUT_LEFT)) {
-        //m_sceneManager->changeScene(SceneType::GameLoad);
+    if (InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_RETURN)
+     || InputDeviceHub::instance().isMousePressed(MOUSE_INPUT_LEFT)) {
+         m_sceneManager->changeScene(SceneType::GameLoad);
     }
 }
 
