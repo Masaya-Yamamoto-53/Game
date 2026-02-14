@@ -12,7 +12,7 @@ public:
     SceneManager();
     void changeScene(
           SceneType newSceneType
-        , const std::string filename = ""
+        , const std::string fileName = ""
     );
     void update();
     void render();

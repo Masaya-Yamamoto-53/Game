@@ -11,16 +11,20 @@ TownScene::TownScene(SceneManager* sceneManager)
 
 void TownScene::update() {
     // マウス選択
-    updateMouseSelection();
+    if (m_mouseEnabled) {
+        updateMouseSelection();
+    }
 
     // キーボード選択
-    if (InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_W)
-     || InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_D)) {
-        moveSelection(+1);
-    }
-    if (InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_S)
-     || InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_A)) {
-        moveSelection(-1);
+    if (m_keyboardEnabled) {
+        if (InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_W)
+         || InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_D)) {
+            moveSelection(+1);
+        }
+        if (InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_S)
+         || InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_A)) {
+            moveSelection(-1);
+        }
     }
 
     // 選択状態を更新
@@ -28,8 +32,8 @@ void TownScene::update() {
         icon.isSelected = icon.data.id == m_keyboardOrder[m_selectedIndex];
     }
 
-    if (InputDeviceHub::instance().isMouseTriggered(MOUSE_INPUT_LEFT)
-     || InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_RETURN)) {
+    if (m_mouseEnabled && InputDeviceHub::instance().isMouseTriggered(MOUSE_INPUT_LEFT)
+     || m_keyboardEnabled && InputDeviceHub::instance().isKeyTriggered(KEY_INPUT_RETURN)) {
         // 選択されたアイコンの処理を実行
         for (const auto& icon : m_icons) {
             if (icon.isSelected) {

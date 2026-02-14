@@ -10,15 +10,15 @@ SceneManager::SceneManager()
 
 void SceneManager::changeScene(
       SceneType newSceneType
-    , const std::string filename
+    , const std::string fileName
 ) {
     printf("Changing scene to %d\n", static_cast<int>(newSceneType));
     m_currentScene = createScene(newSceneType);
     m_currentSceneType = newSceneType;
 
-    if (!filename.empty()) {
-        printf("Loading world scene from file: %s\n", filename.c_str());
-        m_currentScene->load(filename);
+    if (!fileName.empty()) {
+        printf("Loading world scene from file: %s\n", fileName.c_str());
+        m_currentScene->load(fileName);
     }
 }
 
